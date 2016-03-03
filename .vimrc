@@ -94,7 +94,7 @@ set autoindent
 set smartindent
 
 " マウス入力
-set mouse=a
+"set mouse=a
 
 " コマンドを画面最下部に表示
 set showcmd
