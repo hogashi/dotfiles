@@ -132,6 +132,8 @@ esac
 alias rm="rm -iv"
 alias mv="mv -iv"
 alias cp="cp -iv"
+# use 256colors in tmux
+alias tmux="tmux -2"
 #alias bc="bc -lq"
 export PS1='\[\e[m\]\[\e[1;32m\][\u@\h:\w]\[\e[m\]\n\[\e[1;32m\]\$\[\e[m\] '
 if [ -d ${HOME}/.opt/bin ]; then
