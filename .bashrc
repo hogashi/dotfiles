@@ -132,7 +132,12 @@ esac
 alias rm="rm -iv"
 alias mv="mv -iv"
 alias cp="cp -iv"
-export PS1='\[\e[1;32m\][\u@\h:\w]\[\e[m\]\n\[\e[1;32m\]\$\[\e[m\] '
+#alias bc="bc -lq"
+export PS1='\[\e[m\]\[\e[1;32m\][\u@\h:\w]\[\e[m\]\n\[\e[1;32m\]\$\[\e[m\] '
+if [ -d ${HOME}/.opt/bin ]; then
+  PATH="${HOME}/.opt/bin:${PATH}"
+fi
+PATH="${PATH}:/usr/local/share/git-core/contrib/diff-highlight"
 
 # @ayana: rbenv settings
 [[ -d ~/.rbenv  ]] && \
