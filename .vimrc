@@ -94,13 +94,13 @@ set autoindent
 set smartindent
 
 " マウス入力
-set mouse=a
+"set mouse=a
 
 " コマンドを画面最下部に表示
 set showcmd
 
 " j 2回でインサートモードから抜ける
-inoremap <silent> jj <ESC>
+"inoremap <silent> jj <ESC>
 " シェルライクなキーバインドに
 " C-a で行頭
 nnoremap <C-a> ^

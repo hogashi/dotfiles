@@ -16,8 +16,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=2000
+HISTFILESIZE=4000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -133,4 +133,11 @@ alias rm="rm -iv"
 alias mv="mv -iv"
 alias cp="cp -iv"
 export PS1='\[\e[1;32m\][\u@\h:\w]\[\e[m\]\n\[\e[1;32m\]\$\[\e[m\] '
+
+# @ayana: rbenv settings
+[[ -d ~/.rbenv  ]] && \
+  export PATH=${HOME}/.rbenv/bin:${PATH} && \
+    eval "$(rbenv init -)"
+
+alias ghc="stack ghc"
 
