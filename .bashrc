@@ -132,5 +132,9 @@ esac
 alias rm="rm -iv"
 alias mv="mv -iv"
 alias cp="cp -iv"
-export PS1='\[\e[m\]\[\e[1;32m\][\u@\h:\w]\[\e[m\]\n\[\e[1;32m\]\$\[\e[m\] '
+alias emacs="emacs -nw"
+PS1='\[\e[m\]\[\e[1;32m\][\u@\h:\w]\[\e[m\]\n\[\e[1;32m\]\$\[\e[m\] '
+SSH_ASKPASS=''
+PATH="${HOME}/.opt/bin:${PATH}"
+PATH="$PATH:${HOME}/.opt/share/git-core/contrib/diff-highlight"
 
