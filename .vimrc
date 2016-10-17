@@ -100,7 +100,7 @@ set smartindent
 set showcmd
 
 " j 2回でインサートモードから抜ける
-inoremap <silent> jj <ESC>
+"inoremap <silent> jj <ESC>
 " シェルライクなキーバインドに
 " C-a で行頭
 nnoremap <C-a> ^
