@@ -16,8 +16,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=2000
+HISTFILESIZE=4000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -132,5 +132,19 @@ esac
 alias rm="rm -iv"
 alias mv="mv -iv"
 alias cp="cp -iv"
+# use 256colors in tmux
+alias tmux="tmux -2"
+#alias bc="bc -lq"
 export PS1='\[\e[m\]\[\e[1;32m\][\u@\h:\w]\[\e[m\]\n\[\e[1;32m\]\$\[\e[m\] '
+if [ -d ${HOME}/.opt/bin ]; then
+  PATH="${HOME}/.opt/bin:${PATH}"
+fi
+PATH="${PATH}:/usr/local/share/git-core/contrib/diff-highlight"
+
+# @ayana: rbenv settings
+[[ -d ~/.rbenv  ]] && \
+  export PATH=${HOME}/.rbenv/bin:${PATH} && \
+    eval "$(rbenv init -)"
+
+alias ghc="stack ghc"
 
