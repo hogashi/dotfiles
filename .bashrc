@@ -126,7 +126,7 @@ fi
 
 case $TERM in
 linux) LANG=C ;;
-*) LANG=ja_JP.UTF-8 ;;
+*) LANG=en_US.UTF-8 ;;
 esac
 
 alias rm="rm -iv"
@@ -134,15 +134,21 @@ alias mv="mv -iv"
 alias cp="cp -iv"
 # use 256colors in tmux
 alias tmux="tmux -2"
-#alias bc="bc -lq"
+alias bc="bc -l"
 export PS1='\[\e[m\]\[\e[1;32m\][\u@\h:\w]\[\e[m\]\n\[\e[1;32m\]\$\[\e[m\] '
 if [ -d ${HOME}/.opt/bin ]; then
   PATH="${HOME}/.opt/bin:${PATH}"
 fi
 PATH="${PATH}:/usr/local/share/git-core/contrib/diff-highlight"
 
-# @ayana: rbenv settings
+export LESS='-i -M -R -W '
+if which lesspipe.sh > /dev/null; then
+  export LESSOPEN='| /usr/bin/env lesspipe.sh %s 2>&-'
+fi
+
+# rbenv settings
 [[ -d ~/.rbenv  ]] && \
+  export RBENV_ROOT="${HOME}/.rbenv"
   export PATH=${HOME}/.rbenv/bin:${PATH} && \
     eval "$(rbenv init -)"
 
