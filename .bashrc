@@ -132,6 +132,9 @@ esac
 alias rm="rm -iv"
 alias mv="mv -iv"
 alias cp="cp -iv"
+alias emacs="emacs -nw"
+SSH_ASKPASS=''
+PATH="$PATH:${HOME}/.opt/share/git-core/contrib/diff-highlight"
 # use 256colors in tmux
 alias tmux="tmux -2"
 alias bc="bc -l"
@@ -139,7 +142,6 @@ export PS1='\[\e[m\]\[\e[1;32m\][\u@\h:\w]\[\e[m\]\n\[\e[1;32m\]\$\[\e[m\] '
 if [ -d ${HOME}/.opt/bin ]; then
   PATH="${HOME}/.opt/bin:${PATH}"
 fi
-PATH="${PATH}:/usr/local/share/git-core/contrib/diff-highlight"
 
 export LESS='-i -M -R -W '
 if which lesspipe.sh > /dev/null; then
