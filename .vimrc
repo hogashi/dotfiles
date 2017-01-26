@@ -13,7 +13,7 @@ call dein#add('Shougo/unite.vim')
 call dein#add('Shougo/vimfiler.vim')
 call dein#add('sudo.vim')
 call dein#add('cohama/lexima.vim')
-"call dein#add('editorconfig/editorconfig-vim')
+call dein#add('editorconfig/editorconfig-vim')
 "call dein#add('scrooloose/syntastic')
 "call dein#add('pmsorhaindo/syntastic-local-eslint.vim')
 call dein#add('tomasr/molokai')
@@ -47,9 +47,9 @@ set matchtime=2
 " 行の折り返し
 set wrap
 " 不可視文字を表示
-" set list
+set list
 " 不可視文字の表示記号指定
-" set listchars=tab:>,extends:~,eol:$
+set listchars=tab:>.,extends:~ ",eol:$
 " 全角空白の可視化
 " 全角空白: 　
 "highlight def ZenkakuSpace cterm=none ctermbg=red
@@ -112,13 +112,13 @@ set tabstop=2
 " 自動インデントでずれる幅
 set shiftwidth=2
 " インデントを shiftwidth の倍数に丸める
-set shiftround
+"set shiftround
 " 連続空白に対するカーソルの動く幅
 set softtabstop=2
 " 改行でインデント継続
-"set autoindent
+set autoindent
 " 行末に合わせて次の行のインデントを増減
-set smartindent
+"set smartindent
 
 " マウス入力
 "set mouse=a
