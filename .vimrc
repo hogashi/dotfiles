@@ -19,6 +19,7 @@ call dein#add('cohama/lexima.vim')
 call dein#add('tomasr/molokai')
 call dein#add('mattn/emmet-vim')
 call dein#add('itchyny/lightline.vim')
+call dein#add('rhysd/vim-gfm-syntax')
 
 call dein#end()
 
@@ -105,15 +106,15 @@ set wrapscan
 
 " タブ/インデントの設定
 " タブを空白に置き換え
-"set expandtab
+set expandtab
 " Tab 幅を8文字に
-set tabstop=8
+set tabstop=2
 " 自動インデントでずれる幅
-"set shiftwidth=2
+set shiftwidth=2
 " インデントを shiftwidth の倍数に丸める
 set shiftround
 " 連続空白に対するカーソルの動く幅
-"set softtabstop=2
+set softtabstop=2
 " 改行でインデント継続
 "set autoindent
 " 行末に合わせて次の行のインデントを増減
