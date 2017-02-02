@@ -140,7 +140,7 @@ nnoremap <C-c> :q<CR>
 inoremap <C-c> <ESC>:q<CR>
 
 " color scheme settings
-syntax on
+syntax enable
 colorscheme molokai
 set t_Co=256
 
