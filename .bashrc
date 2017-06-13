@@ -131,7 +131,7 @@ esac
 
 alias rm="rm -i"
 alias mv="mv -i"
-alias cp="cp -iv"
+alias cp="cp -i"
 alias emacs="emacs -nw"
 SSH_ASKPASS=''
 PATH="$PATH:${HOME}/.opt/share/git-core/contrib/diff-highlight"
