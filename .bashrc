@@ -182,7 +182,7 @@ if [ -f ~/.git-prompt.sh ]; then
   GIT_PS1_SHOWDIRTYSTATE=1 # show '*'/'+' if unstaged/staged-uncommited changes exist
 fi
 #export PS1='\[\e[m\]\[\e[1;32m\][\u@\h:\[\e[1;33m\]\w\[\e[1;36m\]$(__git_ps1 " - %s ")\[\e[1;32m\]]\[\e[m\]\n\[\e[1;32m\]\$\[\e[m\] '
-export PS1='\[\e[m\]\[\e[1;32m\][\u@\h:\[\e[1;33m\]\w\[\e[1;32m\]]\[\e[m\]\n\[\e[1;32m\]\$\[\e[m\] '
+export PS1='\[\e[m\]\[\e[1;32m\][\u@\h:\[\e[1;33m\]\w\[\e[1;32m\]]\[\e[1;33m\](${PIPESTATUS[@]})\[\e[m\]\n\[\e[1;32m\]\$\[\e[m\] '
 if [ -d ${HOME}/.opt/bin ]; then
   PATH="${HOME}/.opt/bin:${PATH}"
 fi
