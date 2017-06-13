@@ -114,11 +114,11 @@ set expandtab
 " Tab 幅を2文字に
 set tabstop=2
 " 自動インデントでずれる幅
-"set shiftwidth=2
+set shiftwidth=2
 " インデントを shiftwidth の倍数に丸める
 "set shiftround
 " 連続空白に対するカーソルの動く幅
-"set softtabstop=2
+set softtabstop=2
 " 改行でインデント継続
 set autoindent
 " 行末に合わせて次の行のインデントを増減
