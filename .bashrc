@@ -138,6 +138,37 @@ PATH="$PATH:${HOME}/.opt/share/git-core/contrib/diff-highlight"
 # use 256colors in tmux
 alias tmux="tmux -2"
 alias bc="bc -l"
+# english-japanese dictionary
+function ejdic() {
+  if [[ ! -n "$1" ]]; then
+    echo 'ejdic -- English-Japanese dictionary'
+    echo 'Usage: ejdic EN-WORD [-c]'
+    echo '  -c: --color-auto'
+    return
+  fi
+  COLSET='--color=always'
+  if [[ "$2" = "-c" ]]; then
+    COLSET='--color=auto'
+  fi
+  egrep "^[^#]*$1" ${HOME}/.gene-utf8-sharped.txt -A 1 -wi $COLSET | less
+}
+# japanese-english dictionary
+function jedic() {
+  if [[ ! -n "$1" ]]; then
+    echo 'jedic -- Japanese-English dictionary'
+    echo 'Usage: jedic JP-WORD [-c]'
+    echo '  -c: --color-auto'
+    return
+  fi
+  COLSET='--color=always'
+  if [[ "$2" = "-c" ]]; then
+    COLSET='--color=auto'
+  fi
+  egrep "^#.*$1" ${HOME}/.gene-utf8-sharped.txt -B 1 -wi $COLSET | less
+}
+export -f ejdic
+export -f jedic
+
 if [ -f ~/.git-completion.bash ]; then
   source ~/.git-completion.bash
 fi
@@ -156,16 +187,20 @@ if [ -d ${HOME}/.opt/bin ]; then
   PATH="${HOME}/.opt/bin:${PATH}"
 fi
 
-export LESS='-i -M -R -W '
+export LESS='-i -M -R -W -FX'
 if which lesspipe.sh > /dev/null; then
   export LESSOPEN='| /usr/bin/env lesspipe.sh %s 2>&-'
 fi
 
-# rbenv settings
-[[ -d ~/.rbenv  ]] && \
-  export RBENV_ROOT="${HOME}/.rbenv"
-  export PATH=${HOME}/.rbenv/bin:${PATH} && \
-    eval "$(rbenv init -)"
+# anyenv settings
+[[ -d ~/.anyenv  ]] && \
+  export PATH="${HOME}/.anyenv/bin:${PATH}" && \
+    eval "$(anyenv init -)"
+
+# nodenv settings
+[[ -d ~/.nodenv  ]] && \
+  export PATH="${HOME}/.nodenv/bin:${PATH}" && \
+    eval "$(nodenv init -)"
 
 alias ghc="stack ghc"
 

@@ -11,8 +11,8 @@ call dein#add('Shougo/vimproc.vim', {'build': 'make'})
 call dein#add('Shougo/vimshell.vim')
 call dein#add('Shougo/unite.vim')
 call dein#add('Shougo/vimfiler.vim')
-call dein#add('sudo.vim')
-call dein#add('cohama/lexima.vim')
+"call dein#add('sudo.vim')
+"call dein#add('cohama/lexima.vim')
 call dein#add('editorconfig/editorconfig-vim')
 "call dein#add('scrooloose/syntastic')
 "call dein#add('pmsorhaindo/syntastic-local-eslint.vim')
@@ -20,11 +20,10 @@ call dein#add('tomasr/molokai')
 call dein#add('mattn/emmet-vim')
 call dein#add('itchyny/lightline.vim')
 call dein#add('rhysd/vim-gfm-syntax')
+call dein#add('mattn/benchvimrc-vim')
+"call dein#add('MetalPhaeton/easybracket-vim')
 
 call dein#end()
-
-" ファイルタイプごと色付け
-syntax enable
 
 " 行番号表示
 set number
@@ -40,8 +39,8 @@ set cmdheight=2
 set matchpairs& matchpairs+=<:>
 " 対応する括弧を強調表示
 set showmatch
-" 対応括弧強調を2秒にする
-set matchtime=2
+" 対応括弧強調を0.1秒にする
+set matchtime=1
 " 行列番号を右下に表示
 "set ruler
 " 行の折り返し
@@ -55,13 +54,18 @@ set listchars=tab:>.,extends:~ ",eol:$
 "highlight def ZenkakuSpace cterm=none ctermbg=red
 highlight def link ZenkakuSpace Error
 au VimEnter,BufNewFile,BufRead * match ZenkakuSpace /　/
+" 行末空白の可視化
+" 行末空白:
+"highlight def HankakuSpace cterm=none ctermbg=red
+highlight def link HankakuSpace LightlineLeft_normal_0_1
+au VimEnter,BufNewFile,BufRead * match HankakuSpace / \+$/
 " カーソル移動関連の設定
 " BS の影響範囲に制限をしない
 set backspace=indent,eol,start
 " 行頭行末の左右移動で行をまたぐ
 set whichwrap=b,s,h,l,<,>,[,]
 " 上下5行の視界を確保
-set scrolloff=5
+set scrolloff=4
 " 左右16文字の視界を確保
 set sidescrolloff=10
 " 左右スクロールは一文字ずつ行う
@@ -107,8 +111,8 @@ set wrapscan
 " タブ/インデントの設定
 " タブを空白に置き換え
 set expandtab
-" Tab 幅を8文字に
-set tabstop=4
+" Tab 幅を2文字に
+set tabstop=2
 " 自動インデントでずれる幅
 "set shiftwidth=2
 " インデントを shiftwidth の倍数に丸める
@@ -118,13 +122,17 @@ set tabstop=4
 " 改行でインデント継続
 set autoindent
 " 行末に合わせて次の行のインデントを増減
-"set smartindent
+set smartindent
 
 " マウス入力
 "set mouse=a
 
 " コマンドを画面最下部に表示
-"set showcmd
+set showcmd
+
+" +/- でインクリメント/デクリメント
+nnoremap + <C-a>
+nnoremap - <C-x>
 
 " j 2回でインサートモードから抜ける
 "inoremap <silent> jj <ESC>
@@ -143,4 +151,11 @@ inoremap <C-c> <ESC>:q<CR>
 syntax enable
 colorscheme molokai
 set t_Co=256
+
+" display too-long line instead of @
+set display=lastline
+" completion height
+set pumheight=10
+
+set keywordprg=ejdic
 
