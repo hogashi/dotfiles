@@ -1,0 +1,35 @@
+# This is Git's per-user configuration file.
+[http]
+	proxy =
+[https]
+	proxy =
+[pager]
+    log = diff-highlight | less
+    show = diff-highlight | less
+    diff = diff-highlight | less
+[interactive]
+    diffFilter = diff-highlight
+[diff]
+    compactionHeuristic = true
+[alias]
+    s = status -sb
+    ss = status
+    df = diff
+    dfs = diff --stat
+    dfc = diff --cached
+    dfcs = diff --cached --stat
+    dfsc = diff --cached --stat
+    dfh = diff HEAD^ HEAD
+    dfhs = diff HEAD^ HEAD --stat
+    dfsh = diff HEAD^ HEAD --stat
+    a = add
+    au = add -u
+    c = commit
+    ca = commit -a
+    cm = commit -m
+    cv = commit -v
+    cam = commit -am
+    cav = commit -av
+    l = log
+    lg = log --graph
+
