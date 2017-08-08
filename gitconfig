@@ -33,3 +33,6 @@
     l = log
     lg = log --graph
 
+[user]
+	email = i1511015@edu.cc.uec.ac.jp
+	name = hogashi

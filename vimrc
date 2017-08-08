@@ -147,6 +147,9 @@ inoremap <C-e> <ESC>$i<RIGHT>
 nnoremap <C-c> :q<CR>
 inoremap <C-c> <ESC>:q<CR>
 
+" 行末までヤンク
+nnoremap Y y$
+
 " color scheme settings
 syntax enable
 colorscheme molokai
