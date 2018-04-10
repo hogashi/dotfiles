@@ -197,10 +197,5 @@ fi
   export PATH="${HOME}/.anyenv/bin:${PATH}" && \
     eval "$(anyenv init -)"
 
-# nodenv settings
-[[ -d ~/.nodenv  ]] && \
-  export PATH="${HOME}/.nodenv/bin:${PATH}" && \
-    eval "$(nodenv init -)"
-
 alias ghc="stack ghc"
 
