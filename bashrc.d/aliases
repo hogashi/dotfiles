@@ -1,36 +1,41 @@
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
-# some more ls aliases
+# ls
 alias ls='ls --color=auto'
 alias ll='ls -alF'
 alias la='ls -AF'
 alias l='ls -CF'
 alias lt='ls -tF'
 
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+# grep
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 
+# some dangers
 alias rm="rm -i"
 alias mv="mv -i"
 alias cp="cp -i"
+
+# force tui
 alias emacs="emacs -nw"
-SSH_ASKPASS=''
-PATH="$PATH:${HOME}/.opt/share/git-core/contrib/diff-highlight"
+
 # use 256colors in tmux
 alias tmux="tmux -2"
+
+# bc with mathlib
 alias bc="bc -l"
-# english-japanese dictionary
+
+# "alert" for long running command
+## Usage: COMMAND; alert
+##  e.g.: sleep 10; alert
+if [ -x $(which notify-send) ]; then
+  alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+fi
+
+# forces not to open X11 popup SSH pass input
+export SSH_ASKPASS=''
+
+# dictionary
+## english-japanese dictionary
 function ejdic() {
   if [[ ! -n "$1" ]]; then
     echo 'ejdic -- English-Japanese dictionary'
@@ -44,7 +49,9 @@ function ejdic() {
   fi
   egrep "^[^#]*$1" ${HOME}/.gene-utf8-sharped.txt -A 1 -wi $COLSET | less
 }
-# japanese-english dictionary
+export -f ejdic
+
+## japanese-english dictionary
 function jedic() {
   if [[ ! -n "$1" ]]; then
     echo 'jedic -- Japanese-English dictionary'
@@ -58,5 +65,4 @@ function jedic() {
   fi
   egrep "^#.*$1" ${HOME}/.gene-utf8-sharped.txt -B 1 -wi $COLSET | less
 }
-export -f ejdic
 export -f jedic

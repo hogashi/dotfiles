@@ -1,7 +1,25 @@
-if [ -d ${HOME}/.opt/bin ]; then
-  PATH="${HOME}/.opt/bin:${PATH}"
-fi
-export PATH="${PATH}:${HOME}/go/bin"
+# path settings
 
-# xbuild
-export PATH="/opt/local/ruby-2.5.1/bin:${PATH}"
+## do overload
+### xbuild, my bin
+OLADDING=("/opt/local/ruby-2.5.1/bin" "${HOME}/.opt/bin")
+
+for OADIR in $OLADDING; do
+  if [ -d $OADIR ]; then
+    # add before old path
+    export PATH="${OADIR}:${PATH}"
+  fi
+done
+
+
+## donit overload
+### diff-highlight (git), golang
+NOLADDING=("${HOME}/.opt/share/git-core/contrib/diff-highlight" "${HOME}/go/bin")
+
+for NOADIR in $NOLADDING; do
+  if [ -d $NOADIR ]; then
+    # add after old path
+    export PATH="${PATH}:${NOADIR}"
+  fi
+done
+
