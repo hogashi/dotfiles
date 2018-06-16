@@ -1,0 +1,7 @@
+if [ -d ${HOME}/.opt/bin ]; then
+  PATH="${HOME}/.opt/bin:${PATH}"
+fi
+export PATH="${PATH}:${HOME}/go/bin"
+
+# xbuild
+export PATH="/opt/local/ruby-2.5.1/bin:${PATH}"
