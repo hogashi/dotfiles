@@ -56,6 +56,9 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+
+# PS1 settings
+
 if [ "$color_prompt" = yes ]; then
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
@@ -182,7 +185,8 @@ if [ -f ~/.git-prompt.sh ]; then
   GIT_PS1_SHOWDIRTYSTATE=1 # show '*'/'+' if unstaged/staged-uncommited changes exist
 fi
 #export PS1='\[\e[m\]\[\e[1;32m\][\u@\h:\[\e[1;33m\]\w\[\e[1;36m\]$(__git_ps1 " - %s ")\[\e[1;32m\]]\[\e[m\]\n\[\e[1;32m\]\$\[\e[m\] '
-export PS1='\[\e[m\]\[\e[1;32m\][\u@\h:\[\e[1;33m\]\w\[\e[1;32m\]]\[\e[1;33m\](${PIPESTATUS[@]})\[\e[m\]\n\[\e[1;32m\]\$\[\e[m\] '
+#export PS1='\[\e[m\]\[\e[1;32m\][\u@\h:\[\e[1;33m\]\w\[\e[1;32m\]]\[\e[1;33m\](${PIPESTATUS[@]})\[\e[m\]\n\[\e[1;32m\]\$\[\e[m\] '
+export PS1='\[\e[m\]\[\e[1;32m\][\u:\[\e[1;33m\]\w\[\e[1;36m\]$(__git_ps1 " - %s ")\[\e[1;32m\]]\[\e[0;37m\][\t]\[\e[1;33m\](${PIPESTATUS[@]})\[\e[m\]\n\[\e[1;32m\]\$\[\e[m\] '
 if [ -d ${HOME}/.opt/bin ]; then
   PATH="${HOME}/.opt/bin:${PATH}"
 fi
@@ -193,9 +197,12 @@ if which lesspipe.sh > /dev/null; then
 fi
 
 # anyenv settings
-[[ -d ~/.anyenv  ]] && \
-  export PATH="${HOME}/.anyenv/bin:${PATH}" && \
-    eval "$(anyenv init -)"
+#[[ -d ~/.anyenv  ]] && \
+#  export PATH="${HOME}/.anyenv/bin:${PATH}" && \
+#    eval "$(anyenv init -)"
 
-alias ghc="stack ghc"
+export PATH="${PATH}:${HOME}/go/bin"
+
+# xbuild
+export PATH="/opt/local/ruby-2.5.1/bin:${PATH}"
 

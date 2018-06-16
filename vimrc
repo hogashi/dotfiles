@@ -1,29 +1,52 @@
-" dein.vim settings
+"dein Scripts-----------------------------
 if &compatible
-  set nocompatible
+  set nocompatible               " Be iMproved
 endif
-set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
 
-call dein#begin(expand('~/.vim/dein'))
+" Required:
+set runtimepath+=/home/hogas/.opt/src/dein.vim/repos/github.com/Shougo/dein.vim
 
-call dein#add('Shougo/dein.vim')
-call dein#add('Shougo/vimproc.vim', {'build': 'make'})
-call dein#add('Shougo/vimshell.vim')
-call dein#add('Shougo/unite.vim')
-call dein#add('Shougo/vimfiler.vim')
-"call dein#add('sudo.vim')
-"call dein#add('cohama/lexima.vim')
-call dein#add('editorconfig/editorconfig-vim')
-"call dein#add('scrooloose/syntastic')
-"call dein#add('pmsorhaindo/syntastic-local-eslint.vim')
-call dein#add('tomasr/molokai')
-call dein#add('mattn/emmet-vim')
-call dein#add('itchyny/lightline.vim')
-call dein#add('rhysd/vim-gfm-syntax')
-call dein#add('mattn/benchvimrc-vim')
-"call dein#add('MetalPhaeton/easybracket-vim')
+" Required:
+if dein#load_state('/home/hogas/.opt/src/dein.vim')
+  call dein#begin('/home/hogas/.opt/src/dein.vim')
 
-call dein#end()
+  " Let dein manage dein
+  " Required:
+  call dein#add('/home/hogas/.opt/src/dein.vim/repos/github.com/Shougo/dein.vim')
+
+  " Add or remove your plugins here:
+  "call dein#add('Shougo/neosnippet.vim')
+  "call dein#add('Shougo/neosnippet-snippets')
+  call dein#add('Shougo/vimproc.vim', {'build': 'make'})
+  call dein#add('Shougo/vimshell.vim')
+  call dein#add('Shougo/unite.vim')
+  call dein#add('Shougo/vimfiler.vim')
+  call dein#add('editorconfig/editorconfig-vim')
+  call dein#add('tomasr/molokai')
+  "call dein#add('mattn/emmet-vim')
+  call dein#add('itchyny/lightline.vim')
+  call dein#add('rhysd/vim-gfm-syntax')
+  "call dein#add('mattn/benchvimrc-vim')
+
+  " You can specify revision/branch/tag.
+  "call dein#add('Shougo/deol.nvim', { 'rev': 'a1b5108fd' })
+
+  " Required:
+  call dein#end()
+  call dein#save_state()
+endif
+
+" Required:
+filetype plugin indent on
+syntax enable
+
+" If you want to install not installed plugins on startup.
+"if dein#check_install()
+"  call dein#install()
+"endif
+
+"End dein Scripts-------------------------
+
 
 " 行番号表示
 set number

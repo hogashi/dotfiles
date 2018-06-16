@@ -75,7 +75,7 @@ esac
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
+    #alias ls='ls --color=auto'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
@@ -84,12 +84,18 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+# ls var(customized)
+export LSCOLORS=gxfxcxdxbxegedabagacad
+
 # some more ls aliases
-alias ls='ls --color=auto'
+alias ls='ls -G'
 alias ll='ls -alF'
 alias la='ls -AF'
 alias l='ls -CF'
 alias lt='ls -tF'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -126,18 +132,25 @@ fi
 
 case $TERM in
 linux) LANG=C ;;
-*) LANG=en_US.UTF-8 ;;
+*) LANG=ja_JP.UTF-8 ;;
 esac
 
 alias rm="rm -i"
 alias mv="mv -i"
 alias cp="cp -i"
-alias emacs="emacs -nw"
-SSH_ASKPASS=''
-PATH="$PATH:${HOME}/.opt/share/git-core/contrib/diff-highlight"
 # use 256colors in tmux
 alias tmux="tmux -2"
-alias bc="bc -l"
+#alias bc="bc -lq"
+
+# node setting
+#export PATH=$HOME/.nodebrew/current/bin:$PATH
+
+# direnv setting
+#eval "$(direnv hook bash)"
+
+alias netstatnpl='lsof -nP -iTCP'
+alias tailf='less +F'
+
 # english-japanese dictionary
 function ejdic() {
   if [[ ! -n "$1" ]]; then
@@ -182,25 +195,14 @@ if [ -f ~/.git-prompt.sh ]; then
   GIT_PS1_SHOWDIRTYSTATE=1 # show '*'/'+' if unstaged/staged-uncommited changes exist
 fi
 #export PS1='\[\e[m\]\[\e[1;32m\][\u@\h:\[\e[1;33m\]\w\[\e[1;36m\]$(__git_ps1 " - %s ")\[\e[1;32m\]]\[\e[m\]\n\[\e[1;32m\]\$\[\e[m\] '
-export PS1='\[\e[m\]\[\e[1;32m\][\u@\h:\[\e[1;33m\]\w\[\e[1;32m\]]\[\e[1;33m\](${PIPESTATUS[@]})\[\e[m\]\n\[\e[1;32m\]\$\[\e[m\] '
+export PS1='\[\e[m\]\[\e[32m\][\u:\[\e[33m\]\w\[\e[36m\]$(__git_ps1 " - %s ")\[\e[32m\]]\[\e[33m\](${PIPESTATUS[@]})\[\e[m\]\n\[\e[32m\]\$\[\e[m\] '
 if [ -d ${HOME}/.opt/bin ]; then
   PATH="${HOME}/.opt/bin:${PATH}"
 fi
+PATH="${PATH}:/usr/local/share/git-core/contrib/diff-highlight"
 
 export LESS='-i -M -R -W -FX'
 if which lesspipe.sh > /dev/null; then
   export LESSOPEN='| /usr/bin/env lesspipe.sh %s 2>&-'
 fi
-
-# anyenv settings
-[[ -d ~/.anyenv  ]] && \
-  export PATH="${HOME}/.anyenv/bin:${PATH}" && \
-    eval "$(anyenv init -)"
-
-# nodenv settings
-[[ -d ~/.nodenv  ]] && \
-  export PATH="${HOME}/.nodenv/bin:${PATH}" && \
-    eval "$(nodenv init -)"
-
-alias ghc="stack ghc"
 
