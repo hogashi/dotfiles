@@ -1,0 +1,12 @@
+if [ -f ~/.git-completion.bash ]; then
+  source ~/.git-completion.bash
+fi
+if [ -f ~/.git-prompt.sh ]; then
+  source ~/.git-prompt.sh
+  # opt-vars: 1 or null
+  GIT_PS1_STATESEPARATOR=', '
+  GIT_PS1_SHOWUPSTREAM="auto verbose" # show number of commits ahead/behind (+/-) upstream, '=' if the same
+  GIT_PS1_SHOWUNTRACKEDFILES=1 # show '%' if untracked files exist
+  GIT_PS1_SHOWSTASHSTATE=1 # show '$' if stashed
+  GIT_PS1_SHOWDIRTYSTATE=1 # show '*'/'+' if unstaged/staged-uncommited changes exist
+fi
