@@ -115,6 +115,6 @@ fi
 # my settings
 if [ -d ~/.bashrc.d ]; then
   for CONFFILE in ~/.bashrc.d/*; do
-    . $CONFFILE
+    source $CONFFILE
   done
 fi
