@@ -70,3 +70,5 @@ for DFILE in $(ls ${DFDIR} | egrep -v "(\.git|install\.sh|ignores)"); do
   ln -s ${FORCE} ${DFILE} ~/.$(basename ${DFILE})
 done
 
+exec $SHELL -l
+
