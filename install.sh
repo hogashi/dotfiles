@@ -48,8 +48,8 @@ if [ -d $DFDIR ]; then
   esac
 fi
 
-echo "## % git clone git@github.com:hogashi/dotfiles.git ${DFDIR}"
-git clone git@github.com:hogashi/dotfiles.git ${DFDIR}
+echo "## % git clone https://github.com/hogashi/dotfiles.git ${DFDIR}"
+git clone https://github.com/hogashi/dotfiles.git ${DFDIR}
 RETV=$?
 
 if [ $RETV -ne 0 ]; then
