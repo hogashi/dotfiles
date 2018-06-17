@@ -36,6 +36,8 @@ export SSH_ASKPASS=''
 
 # dictionary
 ## english-japanese dictionary
+DMISCDIR="${HOME}/.dotmisc.d"
+
 function ejdic() {
   if [[ ! -n "$1" ]]; then
     echo 'ejdic -- English-Japanese dictionary'
@@ -47,7 +49,7 @@ function ejdic() {
   if [[ "$2" = "-c" ]]; then
     COLSET='--color=auto'
   fi
-  egrep "^[^#]*$1" ${HOME}/.gene-utf8-sharped.txt -A 1 -wi $COLSET | less
+  egrep "^[^#]*$1" ${DMISCDIR}/gene-utf8-sharped.txt -A 1 -wi $COLSET | less
 }
 export -f ejdic
 
@@ -63,6 +65,6 @@ function jedic() {
   if [[ "$2" = "-c" ]]; then
     COLSET='--color=auto'
   fi
-  egrep "^#.*$1" ${HOME}/.gene-utf8-sharped.txt -B 1 -wi $COLSET | less
+  egrep "^#.*$1" ${DMISCDIR}/gene-utf8-sharped.txt -B 1 -wi $COLSET | less
 }
 export -f jedic
