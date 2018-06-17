@@ -68,3 +68,4 @@ function jedic() {
   egrep "^#.*$1" ${DMISCDIR}/gene-utf8-sharped.txt -B 1 -wi $COLSET | less
 }
 export -f jedic
+

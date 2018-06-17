@@ -6,9 +6,9 @@ fi
 if [ -f ${DMISCDIR}/.git-prompt.sh ]; then
   source ${DMISCDIR}.git-prompt.sh
   # opt-vars: 1 or null
-  GIT_PS1_STATESEPARATOR=', '
-  GIT_PS1_SHOWUPSTREAM="auto verbose" # show number of commits ahead/behind (+/-) upstream, '=' if the same
-  GIT_PS1_SHOWUNTRACKEDFILES=1 # show '%' if untracked files exist
-  GIT_PS1_SHOWSTASHSTATE=1 # show '$' if stashed
-  GIT_PS1_SHOWDIRTYSTATE=1 # show '*'/'+' if unstaged/staged-uncommited changes exist
+  export GIT_PS1_STATESEPARATOR=', '
+  export GIT_PS1_SHOWUPSTREAM="auto verbose" # show number of commits ahead/behind (+/-) upstream, '=' if the same
+  export GIT_PS1_SHOWUNTRACKEDFILES=1 # show '%' if untracked files exist
+  export GIT_PS1_SHOWSTASHSTATE=1 # show '$' if stashed
+  export GIT_PS1_SHOWDIRTYSTATE=1 # show '*'/'+' if unstaged/staged-uncommited changes exist
 fi

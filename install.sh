@@ -70,5 +70,6 @@ for DFILE in ${DFDIR}/linkees/*; do
   ln -s ${FORCE} ${DFILE} ~/.$(basename ${DFILE})
 done
 
-exec $SHELL -l
+echo '# done!'
+echo '# do `exec $SHELL -l` to apply them.'
 

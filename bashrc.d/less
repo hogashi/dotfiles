@@ -1,7 +1,5 @@
-if [ -d ${HOME}/.opt/bin ]; then
-  PATH="${HOME}/.opt/bin:${PATH}"
-fi
 export LESS='-i -M -R -W -FX'
 if which lesspipe.sh > /dev/null; then
   export LESSOPEN='| /usr/bin/env lesspipe.sh %s 2>&-'
 fi
+
