@@ -113,8 +113,10 @@ if ! shopt -oq posix; then
 fi
 
 # my settings
-if [ -d ~/.bashrc.d ]; then
-  for CONFFILE in ~/.bashrc.d/*; do
+BRCDIR="${HOME}/.dotfiles/bashrc.d"
+if [ -d $BRCDIR ]; then
+  for CONFFILE in ${BRCDIR}/*; do
     source $CONFFILE
   done
 fi
+

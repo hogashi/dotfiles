@@ -1,4 +1,4 @@
-DMISCDIR="${HOME}/.dotmisc.d"
+DMISCDIR="${HOME}/.dotfiles/dotmisc.d"
 
 if [ -f ${DMISCDIR}/.git-completion.bash ]; then
   source ${DMISCDIR}/.git-completion.bash

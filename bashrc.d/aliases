@@ -36,7 +36,7 @@ export SSH_ASKPASS=''
 
 # dictionary
 ## english-japanese dictionary
-DMISCDIR="${HOME}/.dotmisc.d"
+DMISCDIR="${HOME}/.dotfiles/dotmisc.d"
 
 function ejdic() {
   if [[ ! -n "$1" ]]; then
