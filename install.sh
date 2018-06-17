@@ -23,6 +23,7 @@ fi
 
 DFDIR="${HOME}/.dotfiles"
 
+CSKIP=""
 if [ -d $DFDIR ]; then
   echo "## ${RETV}: '${DFDIR}' already exists."
   echo "## select: by default '(q)uit', OR '(u)se it' OR '(o)verwrite'"
@@ -31,6 +32,7 @@ if [ -d $DFDIR ]; then
   case $RVAR in
     u*)
       echo "## (u)sing it..."
+      CSKIP="true"
       ;;
     o*)
       echo '## (o)verwriting...'
@@ -48,13 +50,15 @@ if [ -d $DFDIR ]; then
   esac
 fi
 
-echo "## % git clone https://github.com/hogashi/dotfiles.git ${DFDIR}"
-git clone https://github.com/hogashi/dotfiles.git ${DFDIR}
-RETV=$?
+if [ $CSKIP != "true" ]; then
+  echo "## % git clone https://github.com/hogashi/dotfiles.git ${DFDIR}"
+  git clone https://github.com/hogashi/dotfiles.git ${DFDIR}
+  RETV=$?
 
-if [ $RETV -ne 0 ]; then
-  echo "## ${RETV}: failed to clone dotfiles. exitting..."
-  return 2
+  if [ $RETV -ne 0 ]; then
+    echo "## ${RETV}: failed to clone dotfiles. exitting..."
+    return 2
+  fi
 fi
 
 echo
