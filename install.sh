@@ -50,7 +50,7 @@ if [ -d $DFDIR ]; then
   esac
 fi
 
-if [ $CSKIP != "true" ]; then
+if [ "$CSKIP" != "true" ]; then
   echo "## % git clone https://github.com/hogashi/dotfiles.git ${DFDIR}"
   git clone https://github.com/hogashi/dotfiles.git ${DFDIR}
   RETV=$?
@@ -67,6 +67,6 @@ echo
 
 for DFILE in $(ls ${DFDIR} | egrep -v "(\.git|install\.sh|ignores)"); do
   echo "## % ln -s ${FORCE} ${DFILE} ~/.$(basename ${DFILE})"
-  ln -s ${DFILE} ~/.${DFILE}
+  ln -s ${FORCE} ${DFILE} ~/.$(basename ${DFILE})
 done
 
