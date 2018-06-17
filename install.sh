@@ -22,35 +22,39 @@ if [ $RETV -ne 0 ]; then
 fi
 
 DFDIR="${HOME}/.dotfiles"
+
+if [ -d $DFDIR ]; then
+  echo "## ${RETV}: '${DFDIR}' already exists."
+  echo "## select: by default '(q)uit', OR '(u)se it' OR '(o)verwrite'"
+  echo -n "[Q/u/o]: "
+  read RVAR
+  case $RVAR in
+    u*)
+      echo "## (u)sing it..."
+      ;;
+    o*)
+      echo '## (o)verwriting...'
+      echo "## % rm -rf ${DFDIR}"
+      rm -rf ${DFDIR}
+      if [ $? -ne 0 ]; then
+        echo "## failed to rm old directory. exitting..."
+        return 2
+      fi
+      ;;
+    *)
+      echo "## (q)uitting..."
+      return 3
+      ;;
+  esac
+fi
+
 echo "## % git clone git@github.com:hogashi/dotfiles.git ${DFDIR}"
 git clone git@github.com:hogashi/dotfiles.git ${DFDIR}
 RETV=$?
 
-echo
 if [ $RETV -ne 0 ]; then
-  if [ $RETV -eq 128 ]; then
-    echo "## ${RETV}: '${DFDIR}' already exists."
-    echo "## select: by default '(q)uit', OR '(u)se it' OR '(o)verwrite'"
-    echo -n "[Q/u/o]: "
-    read RVAR
-    case $RVAR in
-      u*)
-        echo "## (u)sing it..."
-        ;;
-      o*)
-        echo '## (o)verwriting...'
-        echo "## % rm -rf ${DFDIR} && git clone git@github.com:hogashi/dotfiles.git ${DFDIR}"
-        rm -rf ${DFDIR} && git clone git@github.com:hogashi/dotfiles.git ${DFDIR}
-        ;;
-      *)
-        echo "## (q)uitting..."
-        return 3
-        ;;
-    esac
-  else
-    echo "## ${RETV}: failed to clone dotfiles. exitting..."
-    return 2
-  fi
+  echo "## ${RETV}: failed to clone dotfiles. exitting..."
+  return 2
 fi
 
 echo
