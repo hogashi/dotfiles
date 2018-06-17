@@ -66,8 +66,8 @@ echo '# installing dotfiles...'
 echo
 
 for DFILE in $(ls ${DFDIR} | egrep -v "(\.git|install\.sh|ignores)"); do
-  echo "## % ln -s ${FORCE} ${DFILE} ~/.$(basename ${DFILE})"
-  ln -s ${FORCE} ${DFILE} ~/.$(basename ${DFILE})
+  echo "## % ln -s ${FORCE} ${DFDIR}/${DFILE} ~/.$(basename ${DFILE})"
+  ln -s ${FORCE} ${DFDIR}/${DFILE} ~/.$(basename ${DFILE})
 done
 
 exec $SHELL -l
