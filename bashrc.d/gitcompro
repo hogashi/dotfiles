@@ -1,10 +1,10 @@
 DMISCDIR="${HOME}/.dotfiles/dotmisc.d"
 
-if [ -f ${DMISCDIR}/.git-completion.bash ]; then
-  source ${DMISCDIR}/.git-completion.bash
+if [ -f ${DMISCDIR}/git-completion.bash ]; then
+  source ${DMISCDIR}/git-completion.bash
 fi
-if [ -f ${DMISCDIR}/.git-prompt.sh ]; then
-  source ${DMISCDIR}.git-prompt.sh
+if [ -f ${DMISCDIR}/git-prompt.sh ]; then
+  source ${DMISCDIR}/git-prompt.sh
   # opt-vars: 1 or null
   export GIT_PS1_STATESEPARATOR=', '
   export GIT_PS1_SHOWUPSTREAM="auto verbose" # show number of commits ahead/behind (+/-) upstream, '=' if the same
