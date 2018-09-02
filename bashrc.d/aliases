@@ -31,6 +31,28 @@ if [ -x $(which notify-send) ]; then
   alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 fi
 
+# overrides reverce search history for bash
+function reverse-search-history-with-peco() {
+  if which tac >/dev/null 2>&1; then
+    _tac="tac"
+  else
+    _tac="tail -r"
+  fi
+
+  PECO_RESULT=$(history | perl -pe 's/^ *[0-9]+  (.*)$/$1/' | $_tac | peco)
+
+  BEFORE_CURSOR=${READLINE_LINE:0:$READLINE_POINT}
+  AFTER_CURSOR=${READLINE_LINE:$READLINE_POINT}
+
+  READLINE_LINE=${BEFORE_CURSOR}${PECO_RESULT}${AFTER_CURSOR}
+
+  # ${#MYVAR} <-- string length of MYVAR
+  (( READLINE_POINT += ${#PECO_RESULT} ))
+}
+if [ -x $(which peco) ]; then
+  bind -x '"\C-r": reverse-search-history-with-peco'
+fi
+
 # forces not to open X11 popup SSH pass input
 export SSH_ASKPASS=''
 
