@@ -4,7 +4,7 @@
 ### xbuild, my bin
 OLADDING=("/opt/local/ruby-2.5.1/bin" "${HOME}/.opt/bin")
 
-for OADIR in $OLADDING; do
+for OADIR in ${OLADDING[@]}; do
   if [ -d $OADIR ]; then
     # add before old path
     export PATH="${OADIR}:${PATH}"
@@ -16,10 +16,16 @@ done
 ### diff-highlight (git), golang
 NOLADDING=("${HOME}/.opt/share/git-core/contrib/diff-highlight" "${HOME}/go/bin")
 
-for NOADIR in $NOLADDING; do
+for NOADIR in ${NOLADDING[@]}; do
   if [ -d $NOADIR ]; then
     # add after old path
     export PATH="${PATH}:${NOADIR}"
   fi
 done
+
+if [ -d ~/.anyenv ]; then
+  export PATH="$HOME/.anyenv/bin:${PATH}"
+  eval "$(anyenv init -)"
+fi
+
 
