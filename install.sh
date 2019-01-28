@@ -65,10 +65,18 @@ echo
 echo '# installing dotfiles...'
 echo
 
+LINKFAIL=0
 for DFILE in ${DFDIR}/linkees/*; do
   echo "## % ln -s ${FORCE} ${DFILE} ~/.$(basename ${DFILE})"
   ln -s ${FORCE} ${DFILE} ~/.$(basename ${DFILE})
+  if [ $? -ne 0 ]; then
+    LINKFAIL=1
+  fi
 done
+
+if [ $LINKFAIL -eq 1 ]; then
+  echo '# warn: ln failed, consider use "-f" option to force link'
+fi
 
 echo '# done!'
 echo '# do `exec $SHELL -l` to apply them.'
