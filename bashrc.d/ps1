@@ -16,6 +16,21 @@
 #    ;;
 #esac
 
-#export PS1='\[\e[m\]\[\e[1;32m\][\u@\h:\[\e[1;33m\]\w\[\e[1;36m\]$(__git_ps1 " - %s ")\[\e[1;32m\]]\[\e[m\]\n\[\e[1;32m\]\$\[\e[m\] '
-#export PS1='\[\e[m\]\[\e[1;32m\][\u@\h:\[\e[1;33m\]\w\[\e[1;32m\]]\[\e[1;33m\](${PIPESTATUS[@]})\[\e[m\]\n\[\e[1;32m\]\$\[\e[m\] '
-export PS1='\[\e[m\]\[\e[1;32m\][\u:\[\e[1;33m\]\w\[\e[1;36m\]$(__git_ps1 " - %s ")\[\e[1;32m\]]\[\e[0;37m\][\t]\[\e[1;33m\](${PIPESTATUS[@]})\[\e[m\]\n\[\e[1;32m\]\$\[\e[m\] '
+GRE0='\[\e[0;32m\]'
+GRE1='\[\e[1;32m\]'
+YEL0='\[\e[0;33m\]'
+YEL1='\[\e[1;33m\]'
+CYA1='\[\e[1;36m\]'
+GRA0='\[\e[0;37m\]'
+NON='\[\e[m\]'
+GITPS1='$(__git_ps1 " - %s ")'
+# [user@host:/path]
+# [user@host:/path - master u= ]  <- if at git
+PS1_BASE="${GRE0}[${GRE1}\u${GRE0}@${GRE1}\h${GRE0}:${YEL1}\w${CYA1}${GITPS1}${GRE0}]"
+# [12:34:56]
+PS1_DATE="${GRA0}[\t]"
+# (127)
+PS1_STAT="${YEL0}(${YEL1}${PIPESTATUS[@]}${YEL0})"
+# \n$ command
+PS1_PROM="${NON}\n\$ "
+export PS1="${NON}${PS1_BASE}${PS1_DATE}${PS1_STAT}${PS1_PROM}${NON}"
