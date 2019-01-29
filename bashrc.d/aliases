@@ -91,3 +91,19 @@ function jedic() {
 }
 export -f jedic
 
+function uecproxy() {
+  if [[ -n "$1" ]]; then
+    echo '# proxy deactivate'
+    export HTTP_PROXY=''
+  else
+    echo '# proxy activate'
+    export HTTP_PROXY='http://proxy.uec.ac.jp:8080'
+  fi
+
+  export HTTPS_PROXY="$HTTP_PROXY"
+  export http_proxy="$HTTP_PROXY"
+  export https_proxy="$HTTP_PROXY"
+  git config --global http.proxy "$HTTP_PROXY"
+  git config --global https.proxy "$HTTP_PROXY"
+}
+

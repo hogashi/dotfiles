@@ -1,8 +1,8 @@
 # This is Git's per-user configuration file.
 [http]
-	proxy =
+	proxy = 
 [https]
-	proxy =
+	proxy = 
 [pager]
     log = diff-highlight | less
     show = diff-highlight | less
