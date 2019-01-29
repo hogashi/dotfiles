@@ -78,6 +78,10 @@ if [ $LINKFAIL -eq 1 ]; then
   echo '# warn: ln failed, consider use "-f" option to force link'
 fi
 
+# install vim-plug
+echo '# download and install vim-plug'
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
 echo '# done!'
 echo '# do `exec $SHELL -l` to apply them.'
 
